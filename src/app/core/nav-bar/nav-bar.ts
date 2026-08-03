@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './nav-bar.html',
   styleUrl: './nav-bar.scss',
 })
-export class NavBar {}
+export class NavBar {
+  visibale: boolean = false;
+  toggleDropdown() {
+    this.visibale = !this.visibale;
+  }
+}
