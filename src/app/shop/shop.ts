@@ -18,7 +18,7 @@ export class Shop implements OnInit {
   }
 
 products = signal<IProduct[]>([]);
-
+SortingOption ;
   getAllProducts() {
     this.shopsService.getProducts().subscribe({
       next: ((value :Ipagination) => {
@@ -26,5 +26,7 @@ products = signal<IProduct[]>([]);
       })
     })
   }
+
+  SortingByPrice(event: any) {}
 
 }
