@@ -4,6 +4,8 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { CoreModule } from './core/core-module';
+import { SharedModule } from './shared/shared-module';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,11 +14,13 @@ import { CoreModule } from './core/core-module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideClientHydration(withEventReplay()),
+    provideClientHydration(),
+    provideHttpClient()
   ],
   bootstrap: [App]
 })

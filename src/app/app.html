@@ -1,2 +1,10 @@
 
+<!-- header -->
 <app-nav-bar></app-nav-bar>
+
+<!-- body -->
+<ul>
+  @for (item of Category(); track item.id) {
+    <li>{{ item.name }} </li>
+  }
+</ul>
