@@ -3,8 +3,14 @@
 <app-nav-bar></app-nav-bar>
 
 <!-- body -->
-<ul>
+<!-- <ul>
   @for (item of Category(); track item.id) {
     <li>{{ item.name }} </li>
   }
-</ul>
+</ul> -->
+
+ <ul>
+  @for (item of products(); track $index) {
+    <li>{{ item.name }} </li>
+  }
+ </ul>
