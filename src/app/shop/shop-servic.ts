@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpParams } from '@angular/common/http';
 import { Ipagination } from '../shared/Models/pagnation';
+import { ICategory } from '../shared/Models/Category';
+
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +16,15 @@ export class ShopService  {
   BaseUrl = 'https://localhost:7238/api/';
 
 
-  getproducts() {
-    return this.http.get<Ipagination>(this.BaseUrl + "Products/get-all");
+  getproducts(CategoryId: number) {
+    let param = new HttpParams();
+    if (CategoryId) {
+      param = param.append('categoryId', CategoryId);
+    }
+    return this.http.get<Ipagination>(this.BaseUrl + "Products/get-all", { params: param });
+  }
+
+  getcategories() {
+    return this.http.get<ICategory[]>(this.BaseUrl + "Categories/get-all");
   }
 }
