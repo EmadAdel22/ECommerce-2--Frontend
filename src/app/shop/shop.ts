@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-shop',
@@ -6,4 +7,9 @@ import { Component } from '@angular/core';
   templateUrl: './shop.html',
   styleUrl: './shop.scss',
 })
-export class Shop {}
+export class Shop implements OnInit {
+
+  ngOnInit(): void {
+  }
+
+}
