@@ -18,6 +18,7 @@ import { ShopModule } from './shop/shop-module';
     CoreModule,
     SharedModule,
     ShopModule
+    
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

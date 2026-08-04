@@ -5,11 +5,16 @@ import { Ipagination } from '../shared/Models/pagnation';
 @Injectable({
   providedIn: 'root',
 })
-export class ShopsService {
- constructor(private http: HttpClient) {}
+export class ShopService  {
+
+  constructor(private http: HttpClient) { }
+
+
+
   BaseUrl = 'https://localhost:7238/api/';
-  
-  getProducts() {
-   return this.http.get<Ipagination>(this.BaseUrl + "Products/get-all");
+
+
+  getproducts() {
+    return this.http.get<Ipagination>(this.BaseUrl + "Products/get-all");
   }
 }
