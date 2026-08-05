@@ -1,3 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
- @import 'material-icons/iconfont/material-icons.css';
+// /* You can add global styles to this file, and also import other style files */
+// @import 'material-icons/iconfont/material-icons.css';
 
+// /* Importing Bootstrap SCSS file. */
+// @import './node_modules/bootstrap/scss/bootstrap';
+// /* Importing Datepicker SCSS file. */
+// @import 'node_modules/ngx-bootstrap/datepicker/bs-datepicker';
+
+/* You can add global styles to this file, and also import other style files */
+@import 'material-icons/iconfont/material-icons.css';
+
+/* Bootstrap */
+@import 'bootstrap/scss/bootstrap';
+
+/* ngx-bootstrap Datepicker */
+@import 'ngx-bootstrap/datepicker/bs-datepicker';

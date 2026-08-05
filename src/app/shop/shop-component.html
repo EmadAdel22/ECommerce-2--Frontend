@@ -25,7 +25,7 @@
                         All
                     </li> -->
                     @for (item of categories(); track $index) {
-                    <li [class.active]="item.id == CategoryId" (click)="SelectedId(item.id)"
+                    <li [class.active]="item.id == ProductParams.CategoryId" (click)="SelectedId(item.id)"
                         class="list-group-item custom-list-item">
                         {{item.name}}
                     </li>
@@ -60,10 +60,10 @@
                 </ng-container>
                 }
                 
-                <!-- <div class="d-flex justify-content-center align-items-center">
+                 <div class="d-flex justify-content-center align-items-center">
 
-                    <pagination (pageChanged)="OnChangePage($event.page)" [itemsPerPage]="ProductParam.pageSize"  [totalItems]="TotatlCount"></pagination>
-                </div> -->
+                    <pagination (pageChanged)="OnChangePage($event.page)" [itemsPerPage]="ProductParams.PageSize"  [totalItems]="TotatlCount"></pagination>
+                </div> 
 
             </div>
         </section>

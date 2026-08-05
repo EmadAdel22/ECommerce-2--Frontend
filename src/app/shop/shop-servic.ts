@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient , HttpParams } from '@angular/common/http';
 import { Ipagination } from '../shared/Models/pagnation';
 import { ICategory } from '../shared/Models/Category';
+import { ProductParams } from '../shared/Models/producParams';
 
 
 @Injectable({
@@ -16,17 +17,20 @@ export class ShopService  {
   BaseUrl = 'https://localhost:7238/api/';
 
 
-  getproducts(CategoryId?: number, sortSelected?: string, search?: string) {
+  getproducts(ProductParams:ProductParams) {
     let param = new HttpParams();
-    if (CategoryId) {
-      param = param.append('categoryId', CategoryId);
+    if (ProductParams.CategoryId) {
+      param = param.append('categoryId', ProductParams.CategoryId.toString());
     }
-    if (sortSelected) {
-      param = param.append('sort', sortSelected);
+    if (ProductParams.sortSelected) {
+      param = param.append('sort', ProductParams.sortSelected);
     }
-    if (search) {
-      param = param.append('Search', search);
+    if (ProductParams.search) {
+      param = param.append('Search', ProductParams.search);
     }
+          param = param.append('PageNumbre', ProductParams.PageNumbre);
+          param = param.append('PageSize', ProductParams.PageSize);
+
     return this.http.get<Ipagination>(this.BaseUrl + "Products/get-all", { params: param });
   }
 

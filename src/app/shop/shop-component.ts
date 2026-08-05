@@ -4,6 +4,7 @@ import { Ipagination } from '../shared/Models/pagnation';
 import { IProduct } from '../shared/Models/Product';
 import { ICategory } from '../shared/Models/Category';
 import { ViewChild } from '@angular/core';
+import { ProductParams } from '../shared/Models/producParams';
 
 
 
@@ -22,12 +23,17 @@ export class ShopComponent implements OnInit {
 
         constructor(private shopService: ShopService) {}
 
+        ProductParams = new ProductParams();
+        TotatlCount : number 
         // get products
        products = signal<IProduct[]>([]);
         getAllProducts() {
-          this.shopService.getproducts(this.CategoryId, this.sortSelected, this.search).subscribe({
+          this.shopService.getproducts(this.ProductParams).subscribe({
             next:((value: Ipagination) => {
               this.products.set(value.data);
+              this.TotatlCount = value.totalCount;
+              this.ProductParams.PageNumbre = value.pageNumber;
+              this.ProductParams.PageSize = value.pageSize;
             })
           
         });
@@ -36,7 +42,6 @@ export class ShopComponent implements OnInit {
 
       //get categories
       categories = signal<ICategory[]>([]);
-      CategoryId : number ;
         getAllCategories() {
           this.shopService.getcategories().subscribe({
             next:((value: ICategory[]) => {
@@ -46,7 +51,7 @@ export class ShopComponent implements OnInit {
         });
       }
       SelectedId(categoryId: number) {
-        this.CategoryId = categoryId;
+        this.ProductParams.CategoryId = categoryId;
         this.getAllProducts();
       }
 
@@ -58,18 +63,16 @@ export class ShopComponent implements OnInit {
         { name: 'Price: max to min', value: 'PriceDes' }
       ]
 
-      sortSelected: string 
       SortingByPrice(sort : Event){
-        this.sortSelected = (sort.target as HTMLInputElement).value;
+        this.ProductParams.sortSelected = (sort.target as HTMLInputElement).value;
         this.getAllProducts();
 
       }
 
       // search by word
 
-      search : string
       OnSearch(Search:string ){
-        this.search = Search;
+        this.ProductParams.search = Search;
         this.getAllProducts();  
       }
 
@@ -83,4 +86,9 @@ export class ShopComponent implements OnInit {
     this.getAllProducts();
   }
 
+  // pagination
+  OnChangePage(event:any){
+    this.ProductParams.PageNumbre = event;
+    this.getAllProducts();
+  }
 }
