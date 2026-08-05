@@ -36,11 +36,13 @@
         </section> 
 
         <section class="col-md-9">
-            <!-- <div class="d-flex justify-content-between align-items-center mb-4">
-                <div class="paging-container">
-                    <span class="text-dark">showing {{product.length}} of
-                        {{ProductParam.pageNumber*ProductParam.pageSize}}</span>
-                </div>
+             <div class="d-flex justify-content-between align-items-center mb-4">
+                 <div class="paging-container">
+                    <!-- <span class="text-dark">showing {{product.length}} of
+                        {{ProductParam.pageNumber*ProductParam.pageSize}}</span> -->
+                        <span>3 pages from 5 </span>
+                        
+                </div> 
                 <div class="search-container">
                     <div class="input-group search-bar">
                         <input #search (keyup)="OnSearch(search.value)" (keyup.enter)="OnSearch(search.value)"
@@ -49,7 +51,7 @@
                         <input (click)="ResetValue()" type="button" class="btn btn-dark" value="Reset">
                     </div>
                 </div>
-            </div> -->
+            </div> 
 
             <div class="row g-4">
                 @for (item of products(); track $index) {

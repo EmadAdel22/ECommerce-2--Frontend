@@ -1,8 +1,11 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, ElementRef, OnInit, signal } from '@angular/core';
 import { ShopService } from './shop-servic';
 import { Ipagination } from '../shared/Models/pagnation';
 import { IProduct } from '../shared/Models/Product';
 import { ICategory } from '../shared/Models/Category';
+import { ViewChild } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-shop-component',
@@ -22,7 +25,7 @@ export class ShopComponent implements OnInit {
         // get products
        products = signal<IProduct[]>([]);
         getAllProducts() {
-          this.shopService.getproducts(this.CategoryId, this.sortSelected).subscribe({
+          this.shopService.getproducts(this.CategoryId, this.sortSelected, this.search).subscribe({
             next:((value: Ipagination) => {
               this.products.set(value.data);
             })
@@ -61,5 +64,23 @@ export class ShopComponent implements OnInit {
         this.getAllProducts();
 
       }
+
+      // search by word
+
+      search : string
+      OnSearch(Search:string ){
+        this.search = Search;
+        this.getAllProducts();  
+      }
+
+  // reset value of search and sort
+@ViewChild('search')searchInput: ElementRef;
+
+@ViewChild('SortSelected') SortSelected: ElementRef;
+  ResetValue(){
+    this.searchInput.nativeElement.value = '';
+    this.SortSelected.nativeElement.selectedIndex = 0;
+    this.getAllProducts();
+  }
 
 }
