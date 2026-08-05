@@ -22,7 +22,7 @@ export class ShopComponent implements OnInit {
         // get products
        products = signal<IProduct[]>([]);
         getAllProducts() {
-          this.shopService.getproducts(this.CategoryId).subscribe({
+          this.shopService.getproducts(this.CategoryId, this.sortSelected).subscribe({
             next:((value: Ipagination) => {
               this.products.set(value.data);
             })
@@ -45,6 +45,21 @@ export class ShopComponent implements OnInit {
       SelectedId(categoryId: number) {
         this.CategoryId = categoryId;
         this.getAllProducts();
+      }
+
+      // sorting by price
+
+      SortingOption = [
+        { name: 'Price', value: 'Name' },
+        { name: 'Price: min to max', value: 'PriceAC' },
+        { name: 'Price: max to min', value: 'PriceDes' }
+      ]
+
+      sortSelected: string 
+      SortingByPrice(sort : Event){
+        this.sortSelected = (sort.target as HTMLInputElement).value;
+        this.getAllProducts();
+
       }
 
 }

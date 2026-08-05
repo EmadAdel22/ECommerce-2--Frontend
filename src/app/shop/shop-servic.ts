@@ -16,10 +16,13 @@ export class ShopService  {
   BaseUrl = 'https://localhost:7238/api/';
 
 
-  getproducts(CategoryId: number) {
+  getproducts(CategoryId?: number, sortSelected?: string) {
     let param = new HttpParams();
     if (CategoryId) {
       param = param.append('categoryId', CategoryId);
+    }
+    if (sortSelected) {
+      param = param.append('sort', sortSelected);
     }
     return this.http.get<Ipagination>(this.BaseUrl + "Products/get-all", { params: param });
   }
