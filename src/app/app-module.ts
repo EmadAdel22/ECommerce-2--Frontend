@@ -8,10 +8,11 @@ import { SharedModule } from './shared/shared-module';
 import { provideHttpClient } from '@angular/common/http';
 import { ShopModule } from './shop/shop-module';
 import { HomeComponent } from './home-component/home-component';
+import { HomeModule } from './home-component/home-module';
 
 @NgModule({
-  declarations: [App, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, ShopModule],
+  declarations: [App],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, ShopModule, HomeModule],
   providers: [provideBrowserGlobalErrorListeners(), provideClientHydration(), provideHttpClient()],
   bootstrap: [App],
 })
