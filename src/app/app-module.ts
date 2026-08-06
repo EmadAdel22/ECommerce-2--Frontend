@@ -7,23 +7,12 @@ import { CoreModule } from './core/core-module';
 import { SharedModule } from './shared/shared-module';
 import { provideHttpClient } from '@angular/common/http';
 import { ShopModule } from './shop/shop-module';
+import { HomeComponent } from './home-component/home-component';
 
 @NgModule({
-  declarations: [
-    App
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule,
-    ShopModule
-    
-  ],
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideClientHydration(),
-    provideHttpClient()
-  ],
-  bootstrap: [App]
+  declarations: [App, HomeComponent],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, ShopModule],
+  providers: [provideBrowserGlobalErrorListeners(), provideClientHydration(), provideHttpClient()],
+  bootstrap: [App],
 })
-export class AppModule { }
+export class AppModule {}
