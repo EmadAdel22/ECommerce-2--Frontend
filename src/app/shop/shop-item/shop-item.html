@@ -33,9 +33,9 @@
                 <button (click)="SetBasketValue()" class="btn btn-dark">
                     <i class="fa fa-shopping-cart"></i>Add to Cart
                 </button>
-                <!-- <button routerLink="/shop/product-details/{{Product.id}}" class="btn btn-success">
+                 <button [routerLink]="['/product-details', Product.id]" class="btn btn-success">
                     <i class="fa fa-info-circle"></i>Details
-                </button> -->
+                </button> 
             </div>
         </div>
     </div>
