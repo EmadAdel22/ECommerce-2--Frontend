@@ -7,14 +7,15 @@ import { ProductDetailsComponent } from './shop/product-details/product-details'
 const routes: Routes = [
 
   {path: '', component:HomeComponent},
-  {path: 'shop', component: ShopComponent},
-  {path: 'product-details/:id',component: ProductDetailsComponent},
+  
+
+  {path: 'shop', loadChildren:() => import('./shop/shop-routing-module')
+    .then(m => m.ShopRoutingModule)},
+
+
   {path: '**', redirectTo: '', pathMatch: 'full'},
 
-  // {path: 'home', component: HomeComponent},
-
-  // {path: 'products', component: ProductsComponent},
-  // {path: 'contact', component: ContactComponent}
+ 
 ];
 
 @NgModule({

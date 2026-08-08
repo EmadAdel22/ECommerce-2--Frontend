@@ -12,7 +12,7 @@ import { HomeModule } from './home-component/home-module';
 
 @NgModule({
   declarations: [App],
-  imports: [BrowserModule, AppRoutingModule, CoreModule, ShopModule, HomeModule],
+  imports: [BrowserModule, AppRoutingModule, CoreModule, HomeModule],
   providers: [provideBrowserGlobalErrorListeners(), provideClientHydration(), provideHttpClient()],
   bootstrap: [App],
 })
