@@ -14,8 +14,8 @@
             <h5 class="card-title">{{Product.name}}</h5>
             <p class="card-text">{{Product.description}}</p>
             <p class="price">
-                <span class="old-price">{{Product.oldPrice|currency}}</span>
-                {{Product.nEwPrice|currency}}
+                <span class="old-price">{{Product.oldPrice}}</span>
+                {{Product.nEwPrice}}
             </p>
             <div class="rating mb-3">
                 <!-- @for (item of getArrayofRating(Product.rating); track $index) {
